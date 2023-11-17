@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cookie Parser</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h3>Cookie Parser</h3>
+                <form id="cookieForm">
+                    <div class="form-group">
+                        <label for="inputBox">Input JSON:</label>
+                        <textarea class="form-control" id="inputBox" rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <div class="form-group mt-3">
+                    <label for="outputBox">Output:</label>
+                    <textarea class="form-control" id="outputBox" rows="10" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('cookieForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var input = document.getElementById('inputBox').value;
+            var cookies_list = JSON.parse(input);
+            var cookies_dict = {};
+            for (var i = 0; i < cookies_list.length; i++) {
+                cookies_dict[cookies_list[i]['name']] = cookies_list[i]['value'];
+            }
+            document.getElementById('outputBox').value = JSON.stringify(cookies_dict, null, 2);
+        });
+    </script>
+</body>
+</html>
