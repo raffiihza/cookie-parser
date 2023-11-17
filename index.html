@@ -20,6 +20,10 @@
                     <label for="outputBox">Output:</label>
                     <textarea class="form-control" id="outputBox" rows="10" readonly></textarea>
                 </div>
+                <div class="form-group mt-3">
+                    <label for="outputBoxOneLine">Output (One Line):</label>
+                    <input type="text" class="form-control" id="outputBoxOneLine" readonly>
+                </div>
             </div>
         </div>
     </div>
@@ -32,7 +36,9 @@
             for (var i = 0; i < cookies_list.length; i++) {
                 cookies_dict[cookies_list[i]['name']] = cookies_list[i]['value'];
             }
-            document.getElementById('outputBox').value = JSON.stringify(cookies_dict, null, 2);
+            var output = JSON.stringify(cookies_dict, null, 2);
+            document.getElementById('outputBox').value = output;
+            document.getElementById('outputBoxOneLine').value = JSON.stringify(cookies_dict);
         });
     </script>
 </body>
